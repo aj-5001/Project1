@@ -17,7 +17,17 @@ namespace HelloWorld
 
             if (a == "Any key") {
                 Console.WriteLine("Wow, you hit the any key!, now type anything to leave.");
-                Console.WriteLine("Would you like to start your adventure now? Y/N")
+                Console.WriteLine("Would you like to start your adventure now? Y/N");
+                string answer = Console.ReadLine();
+                if (answer == "Y" || answer == "y")
+                {
+                    castleTrek();
+                }
+                else
+                {
+                    Console.WriteLine("Oh okay then, bye!");
+                    Console.ReadKey();
+                }
                
                 Console.ReadKey();
             }
