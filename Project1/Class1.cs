@@ -54,7 +54,36 @@ namespace HelloWorld
 
         static public void castleTrek()
         {
+            //journey to the castle
             Console.WriteLine("You begin walking.. and you walk for some time.. then you walk some more");
+            Console.WriteLine("Suddenly, you come across three bandits attacking a carriage! Will you attack, or hide and watch?");
+            Console.WriteLine("Press 1 to attack | Press 2 to watch");
+            bool checkAnswer = false;
+            string answer = null;
+            answer = Console.ReadLine();
+            while (checkAnswer == false)
+            {
+                if (answer == "1")
+                {
+                    //do something
+                    Console.WriteLine("test complete");
+                    checkAnswer = true;
+                }
+                else if (answer == "2")
+                {
+                    // do something else
+                    Console.WriteLine("test compelete");
+                    checkAnswer = true;
+                }
+                else if (answer != "1" || answer != "2")
+                {
+                    Console.WriteLine("Give a proper answer, 1 or 2: ");
+                    Console.Write("Current Answer: ");
+                    Console.Write(answer);
+                    answer = Console.ReadLine();
+                }
+            }
+            
         }
         
     }
