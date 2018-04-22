@@ -99,12 +99,17 @@ namespace HelloWorld
                     Console.WriteLine("You have 5 seconds to answer!");
                     Console.WriteLine("Press 1 - Slash!");
                     Console.WriteLine("Press 2 - Dogde!");
+<<<<<<< HEAD
                     //Timer timer = new Timer(Hello.timerCallback, null, 1000, Timeout.Infinite);
                     for (int i = 0; i < 5; i++)
                     {
                         Console.WriteLine(i);
                     }
 
+=======
+                    Timer timer = new Timer(Hello.timerCallback, null, 1000, Timeout.Infinite);
+                    
+>>>>>>> e96a4007797ec9ee42e5a6d047b933b7f70ae807
                     
 
                     
