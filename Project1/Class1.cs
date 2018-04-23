@@ -7,11 +7,11 @@ using System.Diagnostics;
 using System.Threading;
 using System.Timers;
 
-namespace HelloWorld
+namespace AdventureGame
 {
-    class Hello
+    class MainAdventure
     {
-        static private int timerCount = 0;
+        static private int timerCount = 1;
        
 
         
@@ -26,7 +26,7 @@ namespace HelloWorld
             Console.WriteLine("Press the any key to continue.");
             String a = Console.ReadLine();
 
-            if (a == "Any key")
+            if (a == "Any key" || a == "any key")
             {
                 Console.WriteLine("Wow, you hit the any key!, now type anything to leave.");
                 Console.WriteLine("Would you like to start your adventure now? Y/N");
@@ -111,30 +111,49 @@ namespace HelloWorld
                     Console.WriteLine("Press 1 - Slash!");
                     Console.WriteLine("Press 2 - Dogde!");
 
-                    //Timer timer = new Timer(Hello.timerCallback, null, 1000, Timeout.Infinite);
-                    //for (int i = 0; i < 5; i++)
-                    //{
-                    //Console.WriteLine(i);
-                    //}
+                 // creates a timer and sets intervals to 1 seconds
                     System.Timers.Timer timer = new System.Timers.Timer();
                     timer.Elapsed += new ElapsedEventHandler(timerCallback);
                     timer.Interval = 1000;
-                    int count2 = 1;
-                    while (count2 < 5)
+                    timer.Enabled = true; // starts timer
+
+                        bool newCheckanswer = false;
+                    char newanswer = 'a';
+                    //checking the answer is correct
+                    while (timerCount <= 5 && !newCheckanswer)
                     {
-                        
-                        timer.Enabled = true;
-                        count2++;
-                        Console.WriteLine(count2);
+
+
+                        //newanswer = Console.ReadKey().KeyChar;
+                        if (newanswer == '1' || newanswer == '2')
+                        {
+                            Console.WriteLine("timer successfully implemented");
+                            newCheckanswer = true;
+                        }
+                        else
+                        {
+                            //Console.WriteLine("Quick! Give a proper answer: ");
+                        }
                     }
                     timer.Stop();
+
+                    if (newCheckanswer == true)
+                    {
+                        Console.WriteLine("ya didn't die");
+                    }
+                    else
+                    {
+                        Console.WriteLine("ya died bitch");
+                    }
                     
 
+
+                    
                     
 
 
 
-                    Console.WriteLine("Okay, maybe this worked? Type to exit");
+                    Console.WriteLine("implement next battle sequence");
                     Console.ReadKey();
                     checkAnswer = true;
                 }
@@ -178,7 +197,8 @@ namespace HelloWorld
 
         static public void timerCallback(Object _, ElapsedEventArgs e)
         {
-            Console.WriteLine("got here but now it doesn't matter, this will be empty");
+            Console.WriteLine(timerCount);
+            timerCount++;
           
         }
         
