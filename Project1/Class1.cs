@@ -20,6 +20,7 @@ namespace HelloWorld
         {
             
             Console.WriteLine("The adventure world:");
+            hitSpaceToContinue();
             
             // Keep the console window open in debug mode.
             Console.WriteLine("Press the any key to continue.");
@@ -55,12 +56,19 @@ namespace HelloWorld
 
                     if (answer == "Y" || answer == "y")
                     {
-                        checkanswer2 = true;
+                        
                         Console.WriteLine("Great job! It's time to start your trek to the castle!");
                         Console.WriteLine("Press any key to begin!");
-                        if (Console.KeyAvailable == false)
+                        while (Console.KeyAvailable == false)
                         {
+                            Thread.Sleep(250);
+                            
+                        }
+                        
+                        {
+                            Console.WriteLine("It worked");
                             castleTrek();
+                            checkanswer2 = true;
                         }
 
                     }
@@ -86,6 +94,9 @@ namespace HelloWorld
             Console.WriteLine("Suddenly, you come across three bandits attacking a carriage! Will you attack, or hide and watch?");
             hitSpaceToContinue();
             Console.WriteLine("Press 1 to attack | Press 2 to watch");
+            // prompt for user
+
+
             bool checkAnswer = false;
             string answer = null;
             answer = Console.ReadLine();
@@ -99,20 +110,32 @@ namespace HelloWorld
                     Console.WriteLine("You have 5 seconds to answer!");
                     Console.WriteLine("Press 1 - Slash!");
                     Console.WriteLine("Press 2 - Dogde!");
-<<<<<<< HEAD
+
                     //Timer timer = new Timer(Hello.timerCallback, null, 1000, Timeout.Infinite);
-                    for (int i = 0; i < 5; i++)
+                    //for (int i = 0; i < 5; i++)
+                    //{
+                    //Console.WriteLine(i);
+                    //}
+                    System.Timers.Timer timer = new System.Timers.Timer();
+                    timer.Elapsed += new ElapsedEventHandler(timerCallback);
+                    timer.Interval = 1000;
+                    int count2 = 1;
+                    while (count2 < 5)
                     {
-                        Console.WriteLine(i);
+                        
+                        timer.Enabled = true;
+                        count2++;
+                        Console.WriteLine(count2);
                     }
-
-=======
-                    Timer timer = new Timer(Hello.timerCallback, null, 1000, Timeout.Infinite);
-                    
->>>>>>> e96a4007797ec9ee42e5a6d047b933b7f70ae807
+                    timer.Stop();
                     
 
                     
+
+
+
+                    Console.WriteLine("Okay, maybe this worked? Type to exit");
+                    Console.ReadKey();
                     checkAnswer = true;
                 }
                 else if (answer == "2")
@@ -135,31 +158,28 @@ namespace HelloWorld
             // function to ease hitting space to continue
             Console.WriteLine("Hit space to continue..");
             bool checkanswer = false;
-            string answer = Console.ReadLine();
+            char answer = Console.ReadKey().KeyChar;
             while (checkanswer == false)
             {
-                if (answer == " ")
+                if (answer == ' ')
                 {
+                    Console.WriteLine();
                     checkanswer = true;
                     return;
                 }
                 else
                 {
                     Console.WriteLine("Hit the spacebar..");
-                    answer = Console.ReadLine();
+                    answer = Console.ReadKey().KeyChar;
                 }
             }
 
         }
 
-        static public void timerCallback(Object _)
+        static public void timerCallback(Object _, ElapsedEventArgs e)
         {
-            if (timerCount > 5)
-            {
-                
-            }
-            timerCount++;
-            
+            Console.WriteLine("got here but now it doesn't matter, this will be empty");
+          
         }
         
     }
