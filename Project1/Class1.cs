@@ -58,18 +58,10 @@ namespace AdventureGame
                     {
                         
                         Console.WriteLine("Great job! It's time to start your trek to the castle!");
-                        Console.WriteLine("Press any key to begin!");
-                        while (Console.KeyAvailable == false)
-                        {
-                            Thread.Sleep(250);
-                            
-                        }
                         
-                        {
-                            Console.WriteLine("It worked");
-                            castleTrek();
-                            checkanswer2 = true;
-                        }
+                        hitAnyKeyToContinue();
+                        castleTrek();
+                        checkanswer2 = true;
 
                     }
                     else
@@ -93,13 +85,13 @@ namespace AdventureGame
             hitSpaceToContinue();
             Console.WriteLine("Suddenly, you come across three bandits attacking a carriage! Will you attack, or hide and watch?");
             hitSpaceToContinue();
-            Console.WriteLine("Press 1 to attack | Press 2 to watch");
+            Console.Write("Will you attack or watch? 1 - Attack | 2 - Watch: ");
             // prompt for user
-
+           
 
             bool checkAnswer = false;
             string answer = null;
-            answer = Console.ReadLine();
+            answer = Console.ReadLine(); 
             while (checkAnswer == false)
             {
                 if (answer == "1")
@@ -117,18 +109,38 @@ namespace AdventureGame
                     timer.Interval = 1000;
                     timer.Enabled = true; // starts timer
 
-                        bool newCheckanswer = false;
+                    bool newCheckanswer = false;
                     char newanswer = 'a';
                     //checking the answer is correct
                     while (timerCount <= 5 && !newCheckanswer)
                     {
+                        if (Console.KeyAvailable)
+                        {
+                            ConsoleKeyInfo key = Console.ReadKey(true);
+                            switch (key.Key)
+                            {
+                                case ConsoleKey.D1:
+                                    Console.WriteLine("You pressed one");
+                                    break;
+                                default:
+                                    break;
 
-
-                        //newanswer = Console.ReadKey().KeyChar;
+                            }
+                        }
                         if (newanswer == '1' || newanswer == '2')
                         {
-                            Console.WriteLine("timer successfully implemented");
+                            Console.WriteLine("You slash and cut and point and prode! The man falls, dead!");
                             newCheckanswer = true;
+                        }
+                        if (newanswer == '2')
+                        {
+                            Console.WriteLine("You slip the attack, and pop out from behind him!");
+                            hitAnyKeyToContinue();
+                            Console.WriteLine("Will you stab in the back? Or cut his legs out and disable him?");
+                            hitAnyKeyToContinue();
+                            Console.WriteLine("Quick, you have 5 seconds to answer!");
+                            Console.WriteLine("Press 1 - Stab | Press 2 - Cut legs");
+
                         }
                         else
                         {
@@ -146,13 +158,6 @@ namespace AdventureGame
                         Console.WriteLine("ya died bitch");
                     }
                     
-
-
-                    
-                    
-
-
-
                     Console.WriteLine("implement next battle sequence");
                     Console.ReadKey();
                     checkAnswer = true;
@@ -200,6 +205,19 @@ namespace AdventureGame
             Console.WriteLine(timerCount);
             timerCount++;
           
+        }
+
+        static public void hitAnyKeyToContinue()
+        {
+            Console.WriteLine("Press any key to continue..");
+
+            while (Console.KeyAvailable == false)
+            {
+                Thread.Sleep(250);
+            }
+
+            Console.ReadKey();
+            Console.WriteLine();
         }
         
     }
