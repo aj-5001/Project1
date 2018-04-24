@@ -56,13 +56,18 @@ namespace AdventureGame
 
                     if (answer == "Y" || answer == "y")
                     {
-                        
+
                         Console.WriteLine("Great job! It's time to start your trek to the castle!");
 
                         hitKeyToContinue.hitAnyKeyToContinue();
                         castleTrek();
                         checkanswer2 = true;
 
+                    }
+                    if (answer == "N" || answer == "n")
+                    {
+                        Console.WriteLine("Okay, have a nice day!");
+                        return;
                     }
                     else
                     {
