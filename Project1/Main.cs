@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Threading;
 using System.Timers;
-
+using AdventureGame;
 namespace AdventureGame
 {
     class MainAdventure
@@ -20,7 +20,7 @@ namespace AdventureGame
         {
             
             Console.WriteLine("The adventure world:");
-            hitSpaceToContinue();
+            hitKeyToContinue.hitSpaceToContinue();
             
             // Keep the console window open in debug mode.
             Console.WriteLine("Press the any key to continue.");
@@ -58,8 +58,8 @@ namespace AdventureGame
                     {
                         
                         Console.WriteLine("Great job! It's time to start your trek to the castle!");
-                        
-                        hitAnyKeyToContinue();
+
+                        hitKeyToContinue.hitAnyKeyToContinue();
                         castleTrek();
                         checkanswer2 = true;
 
@@ -82,9 +82,9 @@ namespace AdventureGame
         {
             //journey to the castle
             Console.WriteLine("You begin walking.. and you walk for some time.. then you walk some more");
-            hitSpaceToContinue();
+            hitKeyToContinue.hitSpaceToContinue();
             Console.WriteLine("Suddenly, you come across three bandits attacking a carriage! Will you attack, or hide and watch?");
-            hitSpaceToContinue();
+            hitKeyToContinue.hitSpaceToContinue();
             Console.Write("Will you attack or watch? 1 - Attack | 2 - Watch: ");
             // prompt for user
            
@@ -98,7 +98,7 @@ namespace AdventureGame
                 {
                     //Begins the attack sequence 
                     Console.WriteLine("You jump out of the bushes, and the first one charges!");
-                    hitSpaceToContinue();
+                    hitKeyToContinue.hitSpaceToContinue();
                     Console.WriteLine("You have 5 seconds to answer!");
                     Console.WriteLine("Press 1 - Slash!");
                     Console.WriteLine("Press 2 - Dogde!");
@@ -135,9 +135,9 @@ namespace AdventureGame
                         if (newanswer == '2')
                         {
                             Console.WriteLine("You slip the attack, and pop out from behind him!");
-                            hitAnyKeyToContinue();
+                            hitKeyToContinue.hitAnyKeyToContinue();
                             Console.WriteLine("Will you stab in the back? Or cut his legs out and disable him?");
-                            hitAnyKeyToContinue();
+                            hitKeyToContinue.hitAnyKeyToContinue();
                             Console.WriteLine("Quick, you have 5 seconds to answer!");
                             Console.WriteLine("Press 1 - Stab | Press 2 - Cut legs");
 
@@ -177,28 +177,7 @@ namespace AdventureGame
             
         }
 
-        static public void hitSpaceToContinue()
-        {
-            // function to ease hitting space to continue
-            Console.WriteLine("Hit space to continue..");
-            bool checkanswer = false;
-            char answer = Console.ReadKey().KeyChar;
-            while (checkanswer == false)
-            {
-                if (answer == ' ')
-                {
-                    Console.WriteLine();
-                    checkanswer = true;
-                    return;
-                }
-                else
-                {
-                    Console.WriteLine("Hit the spacebar..");
-                    answer = Console.ReadKey().KeyChar;
-                }
-            }
 
-        }
 
         static public void timerCallback(Object _, ElapsedEventArgs e)
         {
@@ -207,18 +186,7 @@ namespace AdventureGame
           
         }
 
-        static public void hitAnyKeyToContinue()
-        {
-            Console.WriteLine("Press any key to continue..");
 
-            while (Console.KeyAvailable == false)
-            {
-                Thread.Sleep(250);
-            }
-
-            Console.ReadKey();
-            Console.WriteLine();
-        }
         
     }
 }
